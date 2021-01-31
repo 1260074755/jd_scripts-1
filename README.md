@@ -1,7 +1,7 @@
 ## 通知频道：
-https://t.me/joinchat/V0oxYENmx2PTlY1L
+暂无
 ## 赞赏码:
-![](https://raw.githubusercontent.com/shylocks/Loon/main/icons/donate.png)
+![](https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png)
 
 ## 特别声明: 
 
