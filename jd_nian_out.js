@@ -762,7 +762,6 @@ function pkInfo() {
               }
             } 
           }
-        }
       } catch (e) {
         $.logErr(e, resp)
       } finally {
