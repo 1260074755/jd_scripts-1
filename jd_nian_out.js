@@ -760,12 +760,13 @@ function pkInfo() {
             if (data.code === 0 && data.data && data.data.bizCode === 0) {
               console.log(`\n您的好友PK助力码为${data.data.result.groupInfo.groupAssistInviteId}\n注：此pk邀请码每天都变！`)
               }
-            } else {
-              $.group = false
-              console.log(`获取组队信息失败，请检查`)
-            }
+            } 
           }
         }
+      } catch (e) {
+        $.logErr(e, resp)
+      } finally {
+        resolve();
       }
     })
   })
