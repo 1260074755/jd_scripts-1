@@ -97,7 +97,7 @@ async function jdNian() {
     if (1 <= hour && hour < 12) {
       // 北京时间9点-20点
       $.hasGroup = false
-//      await pkTaskDetail()
+      await pkTaskDetail()
       if ($.hasGroup) await pkInfo()
     }
     if (12 <= hour && hour < 14) {
