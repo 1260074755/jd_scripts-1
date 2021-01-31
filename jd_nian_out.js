@@ -91,8 +91,7 @@ const pkInviteCodes = [
 
 async function jdNian() {
   try {
-      $.hasGroup = true
-      if ($.hasGroup) await pkInfo()
+      await pkInfo()
   } catch (e) {
     $.logErr(e)
   }
@@ -760,19 +759,6 @@ function pkInfo() {
             data = JSON.parse(data);
             if (data.code === 0 && data.data && data.data.bizCode === 0) {
               console.log(`\n您的好友PK助力码为${data.data.result.groupInfo.groupAssistInviteId}\n注：此pk邀请码每天都变！`)
-              let info = data.data.result.groupPkInfo
-              console.log(`预计分得:${data.data.result.groupInfo.personalAward}红包`)
-              if (info.dayAward)
-                console.log(`白天关卡：${info.dayAward}元红包，完成进度 ${info.dayTotalValue}/${info.dayTargetSell}`)
-              else {
-                function secondToDate(result) {
-                  var h = Math.floor(result / 3600);
-                  var m = Math.floor((result / 60 % 60));
-                  var s = Math.floor((result % 60));
-                  return h + "小时" + m + "分钟" + s + "秒";
-                }
-
-                console.log(`守护关卡：${info.guardAward}元红包，剩余守护时间：${secondToDate(info.guardTime / 5)}`)
               }
             } else {
               $.group = false
@@ -780,10 +766,6 @@ function pkInfo() {
             }
           }
         }
-      } catch (e) {
-        $.logErr(e, resp)
-      } finally {
-        resolve();
       }
     })
   })
