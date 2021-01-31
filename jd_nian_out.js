@@ -97,8 +97,7 @@ async function jdNian() {
     if (1 <= hour && hour < 12) {
       // 北京时间9点-20点
       $.hasGroup = false
-//      await pkTaskDetail()
-      console.log(`\n******开始【京东账号${$.index}】${$.nickName || $.UserName}*********\n`);
+      await pkTaskDetail()
       if ($.hasGroup) await pkInfo()
     }
     if (12 <= hour && hour < 14) {
