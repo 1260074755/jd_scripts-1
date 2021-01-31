@@ -91,15 +91,10 @@ const pkInviteCodes = [
 
 async function jdNian() {
   try {
-//    await getHomeData()
-//    if (!$.secretp) return
-//    let hour = new Date().getUTCHours()
-//    if (1 <= hour && hour < 12) {
-      // 北京时间9点-20点
       $.hasGroup = true
-//      await pkTaskDetail()
       if ($.hasGroup) await pkInfo()
-//    }
+  } catch (e) {
+    $.logErr(e)
   }
 }
 
