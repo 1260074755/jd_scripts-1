@@ -40,3 +40,6 @@
 # 个护爱消除
 40 * * * * node /scripts/jd_xxl_gh.js >> /scripts/logs/jd_xxl_gh.log 2>&1
 
+# NianPk极速导出最新互助码
+40 17 * * * node /scripts/jd_nian_out.js >> /scripts/logs/jd_nian_out.log 2>&1
+
