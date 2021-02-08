@@ -116,7 +116,7 @@ async function jdNian() {
     $.risk = false
     $.red = 0
     $.total = 0
-    #await getHomeData()
+    //await getHomeData()
     await getHomeData(true)
   } catch (e) {
     $.logErr(e)
