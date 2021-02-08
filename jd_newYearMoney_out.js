@@ -70,7 +70,19 @@ async function jdNian() {
         $.red = 0
         $.total = 0
         await getHomeData()
-        await $.wait(2000)
+        await $.wait(100)
+        if ($.risk) return
+        await getHomeData(true)
+        await $.wait(100)
+        if ($.risk) return
+        await getHomeData(true)
+        await $.wait(100)
+        if ($.risk) return
+        await getHomeData(true)
+        await $.wait(100)
+        if ($.risk) return
+        await getHomeData(true)
+        await $.wait(100)
         if ($.risk) return
         await getHomeData(true)
     } catch (e) {
