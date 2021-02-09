@@ -1,3 +1,4 @@
+![Anurag’s github stats](https://github-readme-stats.vercel.app/api?username=lan-tianxiang&show_icons=true&theme=merko)
 ## 通知频道：
 暂无
 ## 赞赏码:
