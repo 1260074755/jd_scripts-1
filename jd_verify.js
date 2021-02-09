@@ -120,7 +120,7 @@ function jsonParse(str) {
   }
 }
 
-function Env(t, e) {
+#function Env(t, e) {
     "undefined" != typeof process && JSON.stringify(process.env).indexOf("GITHUB") > -1 && process.exit(0);
     class s{
         constructor(t) {
@@ -180,9 +180,12 @@ function Env(t, e) {
             {
             this.fs = this.fs ? this.fs : require("fs"), this.path = this.path ? this.path : require("path");
                 const t = this.path.resolve(this.dataFile), e = this.path.resolve(process.cwd(), this.dataFile), s = this.fs.existsSync(t), i = !s && this.fs.existsSync(e);
-                if (!s && !i) return {}; {
+                if (!s && !i) return {};
+                {
                     const i = s ? t : e;
-                    try { return JSON.parse(this.fs.readFileSync(i)) } catch (t) { return {} }
+                    try {
+                        return JSON.parse(this.fs.readFileSync(i))
+                    } catch (t) { return {} }
                 }
             }
         }
@@ -206,7 +209,8 @@ function Env(t, e) {
             if (/^@/.test(t)) {
                 const [, s, i] = /^@(.*?)\.(.*?)$/.exec(t), r = s ? this.getval(s) : "";
                 if (r) try {
-                    const t = JSON.parse(r); e = t ? this.lodash_get(t, i, "") : e
+                    const t = JSON.parse(r);
+                    e = t ? this.lodash_get(t, i, "") : e
                 } catch (t) { e = "" }
             } return e
         }
@@ -217,7 +221,10 @@ function Env(t, e) {
                 try {
                     const e = JSON.parse(h);
                     this.lodash_set(e, r, t), s = this.setval(JSON.stringify(e), i)
-                } catch (e) { const o = {}; this.lodash_set(o, r, t), s = this.setval(JSON.stringify(o), i) }
+                } catch (e) {
+                    const o = {};
+                    this.lodash_set(o, r, t), s = this.setval(JSON.stringify(o), i)
+                }
             }
             else s = this.setval(t, e);
             return s
@@ -247,20 +254,28 @@ function Env(t, e) {
         post(t, e = (() => { })) {
             if (t.body && t.headers && !t.headers["Content-Type"] && (t.headers["Content-Type"] = "application/x-www-form-urlencoded"), t.headers && delete t.headers["Content-Length"], this.isSurge() || this.isLoon()) this.isSurge() && this.isNeedRewrite && (t.headers = t.headers || {}, Object.assign(t.headers, { "X-Surge-Skip-Scripting": !1 })), $httpClient.post(t, (t, s, i) => { !t && s && (s.body = i, s.statusCode = s.status), e(t, s, i) });
             else if (this.isQuanX()) t.method = "POST", this.isNeedRewrite && (t.opts = t.opts || {}, Object.assign(t.opts, { hints: !1 })), $task.fetch(t).then(t => { const { statusCode: s, statusCode: i, headers: r, body: o } = t; e(null, { status: s, statusCode: i, headers: r, body: o }, o) }, t => e(t)); else if (this.isNode()) {
-                this.initGotEnv(t); const { url: s, ...i } = t; this.got.post(s, i).then(t => {
+                this.initGotEnv(t);
+                const { url: s, ...i } = t;
+                this.got.post(s, i).then(t => {
                     const { statusCode: s, statusCode: i, headers: r, body: o } = t;
                     e(null, { status: s, statusCode: i, headers: r, body: o }, o)
-                }, t => { const { message: s, response: i } = t; e(s, i, i && i.body) })
+                }, t => {
+                    const { message: s, response: i } = t;
+                    e(s, i, i && i.body)
+                })
             }
         }
         time(t, e = null) {
-            const s = e ? new Date(e) : new Date; let i = { "M+": s.getMonth() + 1, "d+": s.getDate(), "H+": s.getHours(), "m+": s.getMinutes(), "s+": s.getSeconds(), "q+": Math.floor((s.getMonth() + 3) / 3), S: s.getMilliseconds() };
-            /(y+)/.test(t) && (t = t.replace(RegExp.$1, (s.getFullYear() + "").substr(4 - RegExp.$1.length))); for (let e in i) new RegExp("(" + e + ")").test(t) && (t = t.replace(RegExp.$1, 1 == RegExp.$1.length ? i[e] : ("00" + i[e]).substr(("" + i[e]).length)));
+            const s = e ? new Date(e) : new Date;
+            let i = { "M+": s.getMonth() + 1, "d+": s.getDate(), "H+": s.getHours(), "m+": s.getMinutes(), "s+": s.getSeconds(), "q+": Math.floor((s.getMonth() + 3) / 3), S: s.getMilliseconds() };
+            /(y+)/.test(t) && (t = t.replace(RegExp.$1, (s.getFullYear() + "").substr(4 - RegExp.$1.length)));
+            for (let e in i) new RegExp("(" + e + ")").test(t) && (t = t.replace(RegExp.$1, 1 == RegExp.$1.length ? i[e] : ("00" + i[e]).substr(("" + i[e]).length)));
             return t
         }
         msg(e = t, s = "", i = "", r) {
             const o = t => {
-                if (!t) return t; if ("string" == typeof t) return this.isLoon() ? t : this.isQuanX() ? { "open-url": t } : this.isSurge() ? { url: t } : void 0;
+                if (!t) return t;
+                if ("string" == typeof t) return this.isLoon() ? t : this.isQuanX() ? { "open-url": t } : this.isSurge() ? { url: t } : void 0;
                 if ("object" == typeof t) {
                     if (this.isLoon()) {
                         let e = t.openUrl || t.url || t["open-url"], s = t.mediaUrl || t["media-url"];
@@ -273,7 +288,8 @@ function Env(t, e) {
                         return { "open-url": e, "media-url": s }
                     }
                     if (this.isSurge()) {
-                        let e = t.url || t.openUrl || t["open-url"]; return { url: e }
+                        let e = t.url || t.openUrl || t["open-url"];
+                        return { url: e }
                     }
                 }
             };
@@ -286,13 +302,15 @@ function Env(t, e) {
             t.length > 0 && (this.logs = [...this.logs, ...t]), console.log(t.join(this.logSeparator))
         }
         logErr(t, e) {
-            const s = !this.isSurge() && !this.isQuanX() && !this.isLoon(); s ? this.log("", `❗️${this.name}, 错误!`, t.stack) : this.log("", `❗️${this.name}, 错误!`, t)
+            const s = !this.isSurge() && !this.isQuanX() && !this.isLoon();
+            s ? this.log("", `❗️${this.name}, 错误!`, t.stack) : this.log("", `❗️${this.name}, 错误!`, t)
         }
         wait(t) {
             return new Promise(e => setTimeout(e, t))
         }
         done(t = {}) {
-            const e = (new Date).getTime(), s = (e - this.startTime) / 1e3; this.log("", `🔔${this.name}, 结束! 🕛 ${s} 秒`), this.log(), (this.isSurge() || this.isQuanX() || this.isLoon()) && $done(t)
+            const e = (new Date).getTime(), s = (e - this.startTime) / 1e3;
+            this.log("", `🔔${this.name}, 结束! 🕛 ${s} 秒`), this.log(), (this.isSurge() || this.isQuanX() || this.isLoon()) && $done(t)
         }
     }(t, e)
 }
