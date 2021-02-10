@@ -104,7 +104,7 @@ async function jdGlobal() {
         $.earn = 0
         $.score = 0
         $.beans = 0
-    //    await getHome()
+        await getHome()
         await getTask()
    //     await getHome(true)
   //      await helpFriends()
