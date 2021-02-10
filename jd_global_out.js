@@ -78,7 +78,7 @@ $.invites = [];
                 }
                 continue
             }
-            await shareCodesFormat()
+            //await shareCodesFormat()
             await jdGlobal()
         }
     }
