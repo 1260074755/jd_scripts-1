@@ -48,7 +48,7 @@ const JD_API_HOST = 'https://wq.jd.com/';
         }
         continue
       }
-      //await showMsg();
+      await showMsg();
     }
   }
 })().catch((e) => {
