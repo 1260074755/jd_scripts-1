@@ -1,3 +1,3 @@
 #暂无
-#春节红包
-0 22 * * * node /scripts/jd_cxhb.js >> /scripts/logs/jd_cxhb.log 2>&1
+#Joy_run
+18 11,14 * * * node /scripts/jd_joy_run.js >> /scripts/logs/jd_joy_run.log 2>&1
