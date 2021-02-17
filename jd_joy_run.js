@@ -41,10 +41,10 @@ const JD_BASE_API = `https://draw.jdfcloud.com//pet`;
 //下面给出好友邀请助力的示例填写规则
 let invite_pins = ["jd_620b506d07889,jd_qvAijclDYexz,jd_kuIoyQouhCLm,q450878-912928,jd_DyPZZzNZQFxZ"];
 //下面给出好友赛跑助力的示例填写规则
-let run_pins = ["jd_qvAijclDYexz,jd_620b506d07889,jd_kuIoyQouhCLm,q450878-912928,jd_DyPZZzNZQFxZ"];
+let run_pins = ["jd_620b506d07889,jd_qvAijclDYexz,jd_kuIoyQouhCLm,q450878-912928,jd_DyPZZzNZQFxZ"];
 let temp = run_pins[0].split(',')
-let fixPins = temp.splice(temp.indexOf('highdimen'), 1);
-fixPins.push(...temp.splice(temp.indexOf('HIGHDIMEN'), 1));
+let fixPins = temp.splice(temp.indexOf('whoami'), 1);
+fixPins.push(...temp.splice(temp.indexOf('WHOAMI'), 1));
 const randomPins = getRandomArrayElements(temp, 4);
 temp = [...fixPins, ...randomPins];
 run_pins = [temp.join(',')];
@@ -201,7 +201,7 @@ async function main() {
         $.msg($.name, '【提示】请先获取来客有礼宠汪汪token', "微信搜索'来客有礼'小程序\n点击底部的'发现'Tab\n即可获取Token");
         return;
     }
-    await getFriendPins();
+    //await getFriendPins();
     for (let i = 0; i < cookiesArr.length; i++) {
         if (cookiesArr[i]) {
             cookie = cookiesArr[i];
