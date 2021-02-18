@@ -39,18 +39,18 @@ const $ = new Env('宠汪汪赛跑');
 const JD_BASE_API = `https://draw.jdfcloud.com//pet`;
 //此处填入你需要助力好友的京东用户名
 //下面给出好友邀请助力的示例填写规则
-let invite_pins = [""];
+let invite_pins = ["jd_620b506d07889"];
 //下面给出好友赛跑助力的示例填写规则
-let run_pins = [""];
+let run_pins = ["jd_620b506d07889"];
 let temp = run_pins[0].split(',')
 let fixPins = temp.splice(temp.indexOf('whoami'), 1);
 fixPins.push(...temp.splice(temp.indexOf('whoami'), 1));
-const randomPins = getRandomArrayElements(temp, 4);
+const randomPins = getRandomArrayElements(temp, 5);
 temp = [...fixPins, ...randomPins];
 run_pins = [temp.join(',')];
 // $.LKYLToken = '76fe7794c475c18711e3b47185f114b5' || $.getdata('jdJoyRunToken');
 // $.LKYLToken = $.getdata('jdJoyRunToken');
-let friendsArr = []
+let friendsArr = ["jd_620b506d07889"]
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 //IOS等用户直接用NobyDa的jd cookie
