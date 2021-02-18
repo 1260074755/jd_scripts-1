@@ -45,7 +45,7 @@ let run_pins = ["jd_620b506d07889"];
 let temp = run_pins[0].split(',')
 let fixPins = temp.splice(temp.indexOf('whoami'), 1);
 fixPins.push(...temp.splice(temp.indexOf('whoami'), 1));
-const randomPins = getRandomArrayElements(temp, 5);
+const randomPins = getRandomArrayElements(temp, 8);
 temp = [...fixPins, ...randomPins];
 run_pins = [temp.join(',')];
 // $.LKYLToken = '76fe7794c475c18711e3b47185f114b5' || $.getdata('jdJoyRunToken');
@@ -221,7 +221,7 @@ async function main() {
         console.log(`===========【开始助力好友赛跑】===========`)
         const runIndex = $.index > run_pins.length ? (run_pins.length - 1) : ($.index - 1);
         let new_run_pins = run_pins[runIndex].split(',');
-        await run(new_run_pins);
+        await run(new_invite_pins);
       }
       await showMsg();
     }
@@ -247,7 +247,7 @@ function showMsg() {
 }
 //邀请助力
 async function invite(invite_pins) {
-  console.log(`账号${$.index} [${UserName}] 给下面名单的人进行邀请助力\n${invite_pins.map(item => item.trim())}\n`);
+  //console.log(`账号${$.index} [${UserName}] 给下面名单的人进行邀请助力\n${invite_pins.map(item => item.trim())}\n`);
   for (let item of invite_pins.map(item => item.trim())) {
     console.log(`\n账号${$.index} [${UserName}] 开始给好友 [${item}] 进行邀请助力`)
     const data = await enterRoom(item);
@@ -350,7 +350,7 @@ function helpInviteFriend(friendPin) {
 }
 //赛跑助力
 async function run(run_pins) {
-  console.log(`账号${$.index} [${UserName}] 给下面名单的人进行赛跑助力\n${(run_pins.map(item => item.trim()))}\n`);
+  //console.log(`账号${$.index} [${UserName}] 给下面名单的人进行赛跑助力\n${(run_pins.map(item => item.trim()))}\n`);
   for (let item of run_pins.map(item => item.trim())) {
     console.log(`\n账号${$.index} [${UserName}] 开始给好友 [${item}] 进行赛跑助力`)
     const combatDetailRes = await combatDetail(item);
