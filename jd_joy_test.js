@@ -216,6 +216,7 @@ async function main() {
             const inviteIndex = $.index > invite_pins.length ? (invite_pins.length - 1) : ($.index - 1);
             let new_invite_pins = invite_pins[inviteIndex].split(',');
             new_invite_pins = [...new_invite_pins, ...getRandomArrayElements(friendsArr, friendsArr.length >= 18 ? 18 : friendsArr.length)];
+            console.log(`账号${$.index} [${UserName}] 给下面名单的人进行邀请助力\n${invite_pins.map(item => item.trim())}\n`);
             if ($.jdLogin && $.LKYLLogin) {
                 console.log(`===========【开始助力好友赛跑】===========`)
                 const runIndex = $.index > run_pins.length ? (run_pins.length - 1) : ($.index - 1);
