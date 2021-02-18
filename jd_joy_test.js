@@ -45,7 +45,7 @@ let run_pins = ["jd_DyPZZzNZQFxZ,q450878-912928,jd_kuIoyQouhCLm,jd_qvAijclDYexz,
 let temp = run_pins[0].split(',')
 let fixPins = temp.splice(temp.indexOf('whoami'), 1);
 fixPins.push(...temp.splice(temp.indexOf('WHOAMI'), 1));
-const randomPins = getRandomArrayElements(temp, 5);
+const randomPins = getRandomArrayElements(temp, 50);
 temp = [...fixPins, ...randomPins];
 run_pins = [temp.join(',')];
 // $.LKYLToken = '76fe7794c475c18711e3b47185f114b5' || $.getdata('jdJoyRunToken');
