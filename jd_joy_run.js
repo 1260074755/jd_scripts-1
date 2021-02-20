@@ -50,9 +50,9 @@ let invite_pins = ["jd_620b506d07889,jd_qvAijclDYexz,jd_kuIoyQouhCLm,q450878-912
 //下面给出好友赛跑助力的示例填写规则
 let run_pins = ["jd_620b506d07889,jd_qvAijclDYexz,jd_kuIoyQouhCLm,q450878-912928,jd_DyPZZzNZQFxZ"];
 let temp = run_pins[0].split(',')
-let fixPins = temp.splice(temp.indexOf('jd_6cd93e613b0e5'), 1);
-fixPins.push(...temp.splice(temp.indexOf('被折叠的记忆33'), 1));
-const randomPins = getRandomArrayElements(temp, 4);
+let fixPins = temp.splice(temp.indexOf('whoami'), 1);
+fixPins.push(...temp.splice(temp.indexOf('whoam'), 1));
+const randomPins = getRandomArrayElements(temp, 5);
 temp = [...fixPins, ...randomPins];
 run_pins = [temp.join(',')];
 // $.LKYLToken = '76fe7794c475c18711e3b47185f114b5' || $.getdata('jdJoyRunToken');
@@ -227,8 +227,8 @@ async function main() {
       if ($.jdLogin && $.LKYLLogin) {
         console.log(`===========【开始助力好友赛跑】===========`)
         const runIndex = $.index > run_pins.length ? (run_pins.length - 1) : ($.index - 1);
-        let new_run_pins = run_pins[inviteIndex].split(',');
-        await run(new_run_pins);
+        let new_run_pins = run_pins[runIndex].split(',');
+        await run(new_invite_pins);
       }
       await showMsg();
     }
