@@ -48,7 +48,7 @@ const JD_BASE_API = `https://draw.jdfcloud.com//pet`;
 //下面给出好友邀请助力的示例填写规则
 let invite_pins = ["jd_620b506d07889,jd_qvAijclDYexz,jd_kuIoyQouhCLm,q450878-912928,jd_DyPZZzNZQFxZ"];
 //下面给出好友赛跑助力的示例填写规则
-let run_pins = ["jd_620b506d07889,jd_qvAijclDYexz,jd_kuIoyQouhCLm,q450878-912928,jd_DyPZZzNZQFxZ"];
+let run_pins = ["jd_DyPZZzNZQFxZ,q450878-912928,jd_kuIoyQouhCLm,jd_qvAijclDYexz,jd_620b506d07889"];
 let temp = run_pins[0].split(',')
 let fixPins = temp.splice(temp.indexOf('whoami'), 1);
 fixPins.push(...temp.splice(temp.indexOf('whoam'), 1));
