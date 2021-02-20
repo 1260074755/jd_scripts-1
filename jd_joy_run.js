@@ -48,7 +48,7 @@ const JD_BASE_API = `https://draw.jdfcloud.com//pet`;
 //下面给出好友邀请助力的示例填写规则
 let invite_pins = ["jd_620b506d07889,jd_qvAijclDYexz,jd_kuIoyQouhCLm,q450878-912928,jd_DyPZZzNZQFxZ"];
 //下面给出好友赛跑助力的示例填写规则
-let run_pins = ["jd_620b506d07889"];
+let run_pins = ["jd_DyPZZzNZQFxZ,q450878-912928,jd_kuIoyQouhCLm,jd_qvAijclDYexz,jd_620b506d07889"];
 let temp = run_pins[0].split(',')
 let fixPins = temp.splice(temp.indexOf('whoami'), 1);
 fixPins.push(...temp.splice(temp.indexOf('whoam'), 1));
@@ -222,7 +222,7 @@ async function main() {
         console.log(`===========【开始助力好友赛跑】===========`)
         const runIndex = $.index > run_pins.length ? (run_pins.length - 1) : ($.index - 1);
         let new_run_pins = run_pins[runIndex].split(',');
-        await run(new_run_pins);
+        await run(new_invite_pins);
       }
       await showMsg();
     }
