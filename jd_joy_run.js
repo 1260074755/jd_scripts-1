@@ -48,7 +48,7 @@ const JD_BASE_API = `https://draw.jdfcloud.com//pet`;
 //下面给出好友邀请助力的示例填写规则
 let invite_pins = ["jd_620b506d07889,jd_qvAijclDYexz,jd_kuIoyQouhCLm,q450878-912928,jd_DyPZZzNZQFxZ"];
 //下面给出好友赛跑助力的示例填写规则
-let run_pins = ["jd_DyPZZzNZQFxZ,q450878-912928,jd_kuIoyQouhCLm,jd_qvAijclDYexz,jd_620b506d07889"];
+let run_pins = ["jd_620b506d07889,jd_qvAijclDYexz,jd_kuIoyQouhCLm,q450878-912928,jd_DyPZZzNZQFxZ"];
 let temp = run_pins[0].split(',')
 let fixPins = temp.splice(temp.indexOf('whoami'), 1);
 fixPins.push(...temp.splice(temp.indexOf('whoam'), 1));
@@ -57,7 +57,7 @@ temp = [...fixPins, ...randomPins];
 run_pins = [temp.join(',')];
 // $.LKYLToken = '76fe7794c475c18711e3b47185f114b5' || $.getdata('jdJoyRunToken');
 // $.LKYLToken = $.getdata('jdJoyRunToken');
-let friendsArr = ["jd_620b506d07889", "jd_qvAijclDYexz", "jd_kuIoyQouhCLm", "q450878-912928", "jd_DyPZZzNZQFxZ"]
+let friendsArr = ["jd_620b506d07889", "jd_qvAijclDYexz", "jd_kuIoyQouhCLm", "jd_DyPZZzNZQFxZ", "q450878-912928"]
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 //IOS等用户直接用NobyDa的jd cookie
@@ -84,13 +84,7 @@ if ($.isNode()) {
   })
 } else {
   //支持 "京东多账号 Ck 管理"的cookie
-  let cookiesData = $.getdata('CookiesJD') || "[]";
-  cookiesData = jsonParse(cookiesData);
-  cookiesArr = cookiesData.map(item => item.cookie);
-  cookiesArr.reverse();
-  cookiesArr.push(...[$.getdata('CookieJD2'), $.getdata('CookieJD')]);
-  cookiesArr.reverse();
-  cookiesArr = cookiesArr.filter(item => item !== "" && item !== null && item !== undefined);
+  cookiesArr = [$.getdata('CookieJD'), $.getdata('CookieJD2'), ...jsonParse($.getdata('CookiesJD') || "[]").map(item => item.cookie)].filter(item => !!item);
   if ($.getdata('jd_joy_invite_pin')) {
     invite_pins = [];
     invite_pins.push($.getdata('jd_joy_invite_pin'));
@@ -228,7 +222,7 @@ async function main() {
         console.log(`===========【开始助力好友赛跑】===========`)
         const runIndex = $.index > run_pins.length ? (run_pins.length - 1) : ($.index - 1);
         let new_run_pins = run_pins[runIndex].split(',');
-        await run(new_run_pins);
+        await run(new_invite_pins);
       }
       await showMsg();
     }
